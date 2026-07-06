@@ -11,9 +11,11 @@ CLAUDE.md는 두 부분으로 이루어짐:
 
 ## 새 PC 설치
 
+원하는 위치에 clone한 뒤 Claude Code 글로벌 경로(`~/.claude/CLAUDE.md`)로 복사함:
+
 ```bash
-git clone https://github.com/csw9261/claude_md.git ~/Developer/claude_md
-cp ~/Developer/claude_md/CLAUDE.md ~/.claude/CLAUDE.md
+git clone https://github.com/csw9261/claude_md.git
+cp claude_md/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 ## 수정 시
@@ -21,5 +23,5 @@ cp ~/Developer/claude_md/CLAUDE.md ~/.claude/CLAUDE.md
 `~/.claude/CLAUDE.md`를 수정한 뒤 이 저장소에 복사해서 커밋함. 심링크가 아니라 수동 동기화가 필요함:
 
 ```bash
-cp ~/.claude/CLAUDE.md ~/Developer/claude_md/CLAUDE.md
+cp ~/.claude/CLAUDE.md <저장소 경로>/CLAUDE.md
 ```
