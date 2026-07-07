@@ -71,9 +71,11 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 
 ## 문체
 
-- MD 파일 작성 시 음슴체 사용 (예: "~합니다" → "~함")
-- 이모티콘 사용 금지 
+- MD 파일과 코드 주석/docstring은 명사형 종결체 사용 (예: "테스트를 진행함" → "테스트 진행", "SKILL.md를 저장함" → "SKILL.md 저장")
+- 예외: 명사형으로 압축하면 뜻이 흐려지는 부정문·조건문·복잡한 서술은 음슴체 유지 (예: "결과는 절대 0 미만이 될 수 없음")
+- 이모티콘 사용 금지
 - 모든 주석과 docstring은 한국어로 작성
+- 뜻이 왜곡될 수 있는 표준 용어·스펙 키워드(MUST/SHOULD, idempotent 등)는 원어를 쓰고 괄호에 한국어 뜻 병기 (예: "idempotent(멱등)")
 
 ## 주석 / docstring
 
