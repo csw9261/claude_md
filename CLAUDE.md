@@ -78,6 +78,11 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 - 조사 중 진단이나 권고가 바뀌면 처음 보고가 일렀다는 신호임
 - 근거는 위치로만 붙임 — 저장소는 `파일:라인`, 외부 사실은 실제로 연 URL. 명령 출력·문서 본문은 붙이지 않음. 버전·포트·엔드포인트 경로·날짜는 출처에서 본 그대로만 쓰고 기억으로 쓰지 않음
 
+## 기술 선택과 구현은 공식 가이드 우선
+
+- 언어·라이브러리·프레임워크·데이터베이스·인프라 전반에서 설계·구현·설정·운영 방식을 정할 때는 사용 중인 버전에 적용되는 공식 문서와 권장 관례를 먼저 확인하고 최대한 따름
+- 공식 지침의 필수 사항과 권장 사항을 구분. 프로젝트 요구나 실측 결과에 따라 권장 방식과 다르게 선택할 때는 해당 지침과 선택 이유가 분명히 존재해야 함
+
 ---
 
 ## 보고는 정리해서
@@ -116,12 +121,15 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 
 ## Git 규칙
 
-**git 명령어는 반드시 실행 전에 사용자에게 확인을 받아야 함.**
+**되돌리기 어렵거나 외부에 영향을 주는 git 명령만 실행 전에 확인받음.**
 
-- `git commit`, `git push`, `git reset`, `git rebase`, `git merge`, `git checkout`, `git branch -D` 등 모든 git 명령어 해당
-- 명령어와 그 이유를 먼저 설명하고, 사용자가 승인한 후 실행
-- 자동으로 실행하지 않음 — 예외 없음
-- 커밋은 사용자가 직접 함
+- 읽기 명령(`status`, `diff`, `log`, `show`, `blame` 등)은 확인 없이 실행
+- 커밋·푸시는 사용자가 요청했을 때만 함. 요청이 있으면 커밋 메시지와 대상 파일을 보여주고 바로 진행
+- 아래는 요청이 있어도 명령과 영향을 설명하고 승인받은 뒤 실행
+  - 기록을 바꾸는 명령: `reset --hard`, `rebase`, `commit --amend`(이미 푸시한 커밋), `push --force`
+  - 작업을 날릴 수 있는 명령: `checkout -- <파일>`, `restore`, `clean`, `stash drop`, `branch -D`
+  - 기본 브랜치에 대한 `merge`, `push`
+- 커밋 전에 diff를 확인하고, 요청과 무관한 파일은 포함하지 않음
 
 ## 에이전트/워크플로 규모 제한
 
