@@ -83,6 +83,19 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 - 언어·라이브러리·프레임워크·데이터베이스·인프라 전반에서 설계·구현·설정·운영 방식을 정할 때는 사용 중인 버전에 적용되는 공식 문서와 권장 관례를 먼저 확인하고 최대한 따름
 - 공식 지침의 필수 사항과 권장 사항을 구분. 프로젝트 요구나 실측 결과에 따라 권장 방식과 다르게 선택할 때는 해당 지침과 선택 이유가 분명히 존재해야 함
 
+## 지식 문서는 Open Knowledge Format(OKF)으로 작성
+
+- 적용 대상은 프로젝트에서 계속 참조하는 Markdown 문서. 계획, 설계, 구현 계약, 시험 결과, 의사결정 기록, 운영 절차를 포함. 파일 위치와 작업 단계는 기존 프로젝트 지침을 따름.
+- bundle root는 지식 문서를 모아 두는 최상위 디렉터리(기존 지침이 정한 위치). 링크와 경로는 이 디렉터리를 기준으로 해석되고, `.`으로 시작하는 디렉터리는 bundle에서 제외됨.
+- OKF 지식 문서는 UTF-8 Markdown으로 작성. 파일 첫 줄부터 `---`로 감싼 YAML frontmatter를 두고 문서 종류를 나타내는 문자열 `type`을 기록. 같은 YAML 키의 중복 금지.
+- `index.md`·`log.md`는 OKF 예약 파일명이므로 지식 문서의 파일명으로 쓰지 않음.
+- 팀 기본값으로 `title`에는 사람이 읽을 제목, `description`에는 문서가 답하는 질문이나 다루는 범위를 한 문장으로 기록. `type`은 프로젝트에서 이미 쓰는 명칭을 재사용. 예시는 `Plan`, `Design`, `Test Result`, `Runbook`.
+- 관련 문서는 본문에서 표준 Markdown 링크로 연결. 번들 안의 문서는 상대 경로 사용. 외부 자료에 근거한 개별 주장을 인용할 때는 frontmatter의 `sources`에 `resource`와 `id`를 기록하고 본문의 해당 주장에 같은 ID의 각주 `[^id]` 사용. 근거는 직접 확인한 자료로 한정.
+- `tags`, `generated`, `verified` 등 선택 필드는 기록할 사실과 용도가 있을 때 사용. 문서를 작성하거나 수정했다는 이유만으로 검증 완료 정보를 기입하지 않음. 기존 문서를 편집할 때는 뜻을 모르는 확장 키도 보존.
+- `AGENTS.md` 등 도구 지침, 외부 도구가 형식을 정한 파일, 측정 원자료에는 각 파일의 기존 형식 적용.
+
+기준 사양: [Open Knowledge Format v0.3](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md)
+
 ---
 
 ## 보고는 정리해서
